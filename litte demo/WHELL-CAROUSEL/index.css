@@ -1,0 +1,84 @@
+.carousel {
+    max-width: 800px;
+    height: 200px;
+}
+
+.carousel .panels {
+    /*外面相对定位给里面的一个参考*/
+    position: relative;
+    height: 100%;
+}
+
+/*先实现通常的的轮播效果*/
+.carousel .panels > a {
+
+    position: absolute;
+    /*设置高度和宽度的两种方法,一种是给里面的元素设置固定的宽高,这样拓展性不强*/
+    /*最好的办法是在外面设置大小，里面图片撑开，由外面大小决定图片大小，这个好处是图片会随着屏幕大小而改变*/
+    /*也方便移动端的定位*/
+    /*绝对定位，高度为零，要上一级撑开*/
+    height: 100%;
+    /*默认为 1*/
+    z-index: 1;
+}
+
+/*让第一张显示在最上面*/
+.carousel .panels > a:first-child {
+    z-index: 10;
+}
+
+.carousel .panels img {
+    width: 100%;
+    /*img 的高度设置为 100% ，这样就要外面设置具体的高度，才能有地方撑开,上级没有 height，该高度不会生效*/
+    height: 100%;
+    /*设置图片在浏览器缩放的时候不变形*/
+    object-fit: cover;
+}
+
+/*四个点*/
+.carousel .action {
+    display: flex;
+    /*设置一下字体*/
+    font-size: 12px;
+    color: #999;
+    margin-top: 8px;
+}
+
+.carousel .action .pre {
+    order: 1;
+    /*表示可以点击*/
+    cursor: pointer;
+}
+
+.carousel .action .next {
+    order: 3;
+    cursor: pointer;
+}
+
+/*让上一页在左边，下一页在右边 四个点在中间*/
+.carousel .dots {
+    order: 2;
+    /* 撑满,让下一页跑到最右边 */
+    flex: 1;
+    /*因为是 inline-box，因此是 text-align 会生效*/
+    text-align: center;
+    /*为了看清楚 this 和 e.target 是什么*/
+    /*border: 1px solid;*/
+}
+
+/*dots的样式*/
+.carousel .dots > span {
+    display: inline-block;
+    width: 6px;
+    height: 4px;
+    border-radius: 2px;
+    background: #ddd;
+    /*鼠标移动上去有特殊效果*/
+    cursor: pointer;
+}
+
+/*有一个长一点的点，表示正在被选中的点*/
+.carousel .dots > span.active {
+    width: 10px;
+    background: #aaa;
+}
