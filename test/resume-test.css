@@ -13,6 +13,8 @@ body {
     font-size: 24px;
     float: left;
     font-family: Arial Black;
+    padding-top: 3px;
+    padding-buttom: 4px;
 }
 
 .clearfix > .logo > .rs {
@@ -29,6 +31,7 @@ body {
 }
 
 .topNavBar > div {
+    padding-top: 7px;
     float: right;
 
 }
