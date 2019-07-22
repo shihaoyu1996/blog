@@ -1,6 +1,11 @@
 body {
-    background: black;
     margin: 0;
+    background-color: #efefef;
+}
+
+* {
+    margin: 0;
+    padding: 0;
 }
 
 .clearfix {
@@ -26,8 +31,9 @@ body {
     color: #9a9da2;
 }
 
-.topNavBar{
+.topNavBar {
     padding: 20px 16px 20px 16px;
+    position: fixed;
 }
 
 .topNavBar > div {
@@ -64,4 +70,42 @@ body {
 
 .topNavBar > div > ul > li > a:hover {
     border-bottom: 3px solid #d16c6a;
+}
+
+.banner {
+    background-image: url("./img/rs-cover.jpg");
+    height: 515px;
+    background-size: cover;
+    background-position: center center;
+}
+
+.banner .mask {
+    height: 515px;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+.userCard {
+    width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+}
+
+.userCard .pictureAndText {
+    padding: 50px;
+    background-color: #ffffff;
+}
+
+.userCard .picture, .userCard .text {
+    float: left;
+}
+
+.userCard .picture img{
+    width: 299px;
+    height: 347px;
+}
+
+.userCard .picture .text{
+    margin-left: 60px;
 }
