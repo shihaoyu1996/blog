@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--简单版本，存在一个bug，数量会存在负数-->
+    <!--<span @click="num&#45;&#45;">-</span>-->
+    <!--<input type="text" size="1" v-model="num">-->
+    <!--<span @click="num++">+</span>-->
+
+    <span @click="sub">-</span>
+    <input type="text" size="1" v-model="num">
+    <span @click="add">+</span>
+
+    <!--也可以不加括号，有参数时，需要加括号-->
+    <!--<span @click="add()">+</span>-->
+    {{text}}
+
+</div>
+<script>
+    var text = "测试";
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            num: 0,
+            text: text,   // 这里可以简写成 test
+            // text,
+        },
+        // 定义操作data数据的方法
+        methods: {
+            add: function () {
+                this.num++;  // this 指代vm对象
+                let _this = this;
+                setTimeout(function () {
+                    // 因为setTimeOut不是vm提供的，所以这里的this指代的不是vm对象
+                    // 因此我们要在这里使用vm对象，需要在外面把vm对象（this）赋值
+                    //给一个变量，我们在这里引用变量即可。
+                    alert(_this.num)
+                }, 1000)
+            },
+            // 在新版本的js代码中，给对象添加方法，可以进行简写
+            // sub: function () {
+            //     this.num--;
+            //     if(this.num <=0){
+            //         this.num=0;
+            //     }
+            // }
+            sub() {  // 省略了 : function
+                this.num--;
+                if (this.num <= 0) {
+                    this.num = 0;
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>
